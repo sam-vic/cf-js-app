@@ -25,6 +25,7 @@ let listOfGreens = (function () {
 
 listOfGreens.add({ name: 'Thymn', cost: 4, types: 'herbs' })
 
+//loop function to display product line
 listOfGreens.getAll().forEach(items => {
     // framework of listing the product
     let textStructure = (
@@ -33,7 +34,7 @@ listOfGreens.getAll().forEach(items => {
         'Type: ' + items.types + '; ' + '<br/>'
     )
 
-    //loop to display product line
+    //conditional testing for how product sold
     if (items.types === 'greens') {
         document.write(
             textStructure + 'Sold per head' + '<br/>'
@@ -55,34 +56,9 @@ listOfGreens.getAll().forEach(items => {
     }
 })
 
+// Filter function for product specificity
 
+console.log(listOfGreens.getAll().map({types: types}))
 
-// for ( i=0; i<listOfGreens.length; i++ ) {
-//     //variable for iterator before it is declared
-//     let x = i
-//     // framework of listing the product
-//     let textStructure = (
-//         'Product: ' + listOfGreens[x].name + '; ' +
-//         'Cost: ' + listOfGreens[x].cost + '; ' +
-//         'Type: ' + listOfGreens[x].types + '; ' + '<br/>'
-//     )
-
-//     //loop to display product line
-//     if (listOfGreens[i].types === 'greens' ) {
-//         document.write(
-//             textStructure + 'Sold per head' + '<br/>'
-//         )
-
-//     } else if (listOfGreens[i].types === 'micro-greens') {
-
-//         document.write(
-//             textStructure + 'Sold per 100g' + '<br/>'
-//         )
-
-//     } else {
-//         document.write(
-//             textStructure + 'Sold per shell' + '<br/>'
-//         )
-//     }
-// }
-
+const productFilter = listOfGreens.getAll().filter(listOfGreens.getAll().types === 'greens')
+console.log(productFilter, 'qweqweq')
