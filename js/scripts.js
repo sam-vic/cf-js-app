@@ -10,8 +10,8 @@ let listOfGreens = (function () {
         // addition of new data to end of array
         add: function (newProduct) {
             //condition 1 to check for data type, condition 2 check for object keys before addition to array
-            (typeof newProduct === 'object' && Object.keys(newProduct) === 'name', 'cost', 'types')?
-            data.push(newProduct): 'Wrong data type'
+            (typeof newProduct === 'object' && Object.keys(newProduct) === 'name', 'cost', 'types') ?
+                data.push(newProduct) : 'Wrong data type'
         },
 
         // call for new data array
@@ -58,7 +58,6 @@ listOfGreens.getAll().forEach(items => {
 
 // Filter function for product specificity
 
-console.log(listOfGreens.getAll().map({types: types}))
 
-const productFilter = listOfGreens.getAll().filter(listOfGreens.getAll().types === 'greens')
-console.log(productFilter, 'qweqweq')
+const productFilter = listOfGreens.getAll().filter(item => item.types === 'greens')
+console.log(productFilter, '123213')
