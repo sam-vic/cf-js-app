@@ -29,9 +29,11 @@ listOfGreens.add({ name: 'Thymn', cost: 4, types: 'herbs' })
 listOfGreens.getAll().forEach(items => {
     // framework of listing the product
     let textStructure = (
-        'Product: ' + items.name + '; ' +
-        'Cost: ' + items.cost + '; ' +
-        'Type: ' + items.types + '; ' + '<br/>'
+        '<div>' + 
+            'Product: ' + items.name + '; ' +
+            'Cost: ' + items.cost + '; ' +
+            'Type: ' + items.types + '; ' +
+        '</div>'
     )
 
     //conditional testing for how product sold
