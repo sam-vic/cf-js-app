@@ -52,7 +52,7 @@ let listOfGreens = (function () {
                 //In-case product type is not available
                 return button.innerText = 'Product undefined'
             }
-
+            // event handler to log selected product
             button.addEventListener('click', event => {
                 this.showDetails(items.name)
             })
@@ -60,7 +60,7 @@ let listOfGreens = (function () {
             listItem.appendChild(button)
             productSelector.appendChild(listItem)
         },
-
+        // log selected product
         showDetails: function (button) {
             console.log(button)
         }
