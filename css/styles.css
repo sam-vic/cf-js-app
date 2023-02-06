@@ -1,3 +1,25 @@
 body {
     font-family: 'Poppins';
+    padding: 1rem;
+}
+
+h1 {
+    padding: 10px;
+}
+
+li {
+    padding: 10px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.button {
+    background-color: transparent;
+    color: black;
+    font-size: 30px;
+    border: 3px;
+}
+
+.button:hover {
+    background-color: bisque;
 }
