@@ -53,9 +53,16 @@ let listOfGreens = (function () {
                 return button.innerText = 'Product undefined'
             }
 
+            button.addEventListener('click', event => {
+                this.showDetails(items.name)
+            })
             button.classList.add('button')
             listItem.appendChild(button)
             productSelector.appendChild(listItem)
+        },
+
+        showDetails: function (button) {
+            console.log(button)
         }
     }
 })();
