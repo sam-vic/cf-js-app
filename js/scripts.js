@@ -32,21 +32,22 @@ let listOfGreens = (function () {
             let button = (
                 document.createElement('button')
             )
+            
 
             // framework of listing the product
             let textStructure = (
                 'Product: ' + items.name + '; ' +
-                'Cost: ' + items.cost + '; ' +
-                'Type: ' + items.types + '; '
+                'Type: ' + items.types + '; ' +
+                'Cost: $' + items.cost + ' '
             )
 
             //conditional testing for how product sold
             if (items.types === 'greens') {
-                button.innerText = textStructure + 'Sold per head'
+                button.innerText = textStructure + 'per head'
             } else if (items.types === 'micro-greens') {
-                button.innerText = textStructure + 'Sold per 100g'
+                button.innerText = textStructure + 'per 100g'
             } else if (items.types === 'herbs') {
-                button.innerText = textStructure + 'Sold per shell'
+                button.innerText = textStructure + 'per shell'
             } else {
                 //In-case product type is not available
                 return button.innerText = 'Product undefined'
