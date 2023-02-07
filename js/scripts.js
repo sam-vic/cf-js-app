@@ -36,8 +36,8 @@ let listOfGreens = (function () {
 
             // framework of listing the product
             let textStructure = (
-                'Product: ' + items.name + '; ' +
-                'Type: ' + items.types + '; ' +
+                'Product: ' + items.name + '; ' + 
+                //'Type: ' + items.types + '; ' +
                 'Cost: $' + items.cost + ' '
             )
 
