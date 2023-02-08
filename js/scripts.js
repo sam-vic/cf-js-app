@@ -1,10 +1,6 @@
 let listOfGreens = (function () {
-    let data = [
-        { name: 'Kale', cost: 4, types: 'greens' },
-        { name: 'Lettuce', cost: 5, types: 'greens' },
-        { name: 'Mini kale', cost: 15, types: 'micro-greens' },
-        { name: 'Basil', cost: 5, types: 'herbs' }
-    ]
+    let data = []
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     return {
         // addition of new data to end of array
@@ -66,8 +62,6 @@ let listOfGreens = (function () {
         }
     }
 })();
-// addition of new products
-listOfGreens.add({ name: 'Thymn', cost: 4, types: 'herbs' })
 
 
 
