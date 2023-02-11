@@ -1,11 +1,14 @@
-let listOfGreens = (function () {
+let listOfData = (function () {
     let data = []
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
 
     return {
         // addition of new data to end of array
         add: function (pokemon) {
-            (typeof pokemon === 'object' && 'name' in pokemon) ?
+            (typeof pokemon === 'object' 
+                && 'name' in pokemon 
+                && 'detailsUrl' in pokemon
+            ) ?
                 data.push(pokemon) : 'Wrong data type'
         },
 
@@ -27,21 +30,17 @@ let listOfGreens = (function () {
             let button = (
                 document.createElement('button')
             )
-
+            //button text
             button.innerText = items.name
             // event handler to log selected product
             button.addEventListener('click', event => {
-                this.showDetails(items.name)
+                this.showDetails(items)
             })
             button.classList.add('button')
             listItem.appendChild(button)
             productSelector.appendChild(listItem)
         },
-        // log selected product
-        showDetails: function (button) {
-            console.log(button)
-        },
-
+        //fetch api into json formate 
         loadList: function () {
             return fetch(apiUrl).then(function (response) {
                 return response.json();
@@ -56,18 +55,38 @@ let listOfGreens = (function () {
             }).catch(function (event) {
                 console.error(event);
             })
+        },
+        //fetch data from api 
+        loadDetails: function(item) {
+            let url = item.detailsUrl
+            return fetch(url).then(response => {
+                return response.json()
+            }).then(details => {
+                item.imageUrl = details.sprites.front_default
+                item.height = details.height
+                item.types = details.types
+            }).catch(event => {
+                console.error(event)
+            })
+        },
+
+        // log selected product
+        showDetails: function (item) {
+            listOfData.loadDetails(item).then(function(){
+                console.log(item)
+            })
         }
     }
 })();
 
 
 //loop function to display product line
-listOfGreens.loadList().then(function () {
-    listOfGreens.getAll().forEach(items => {
-        listOfGreens.addListItem(items)
+listOfData.loadList().then(function () {
+    listOfData.getAll().forEach(items => {
+        listOfData.addListItem(items)
     })
 })
 
 // Filter function for product specificity
-const productFilter = listOfGreens.getAll().filter(item => item.types === 'greens')
+const productFilter = listOfData.getAll().filter(item => item.types === 'greens')
 console.log(productFilter, '123213')
