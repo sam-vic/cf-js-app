@@ -1,12 +1,12 @@
 let listOfData = (function () {
     let data = []
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=5';
 
     return {
         // addition of new data to end of array
         add: function (pokemon) {
-            (typeof pokemon === 'object' 
-                && 'name' in pokemon 
+            (typeof pokemon === 'object'
+                && 'name' in pokemon
                 && 'detailsUrl' in pokemon
             ) ?
                 data.push(pokemon) : 'Wrong data type'
@@ -42,22 +42,25 @@ let listOfData = (function () {
         },
         //fetch api into json formate 
         loadList: function () {
+            this.showLoadingMessage()
             return fetch(apiUrl).then(function (response) {
-                return response.json();
+                return response.json()
             }).then((json) => {
                 json.results.forEach((item) => {
                     let pokemon = {
                         name: item.name,
                         detailsUrl: item.url
                     };
-                    this.add(pokemon);
-                });
+                    this.add(pokemon)
+                })
+                this.hideLoadingMessage()
             }).catch(function (event) {
-                console.error(event);
+                console.error(event)
+                this.hideLoadingMessage()
             })
         },
         //fetch data from api 
-        loadDetails: function(item) {
+        loadDetails: function (item) {
             let url = item.detailsUrl
             return fetch(url).then(response => {
                 return response.json()
@@ -65,16 +68,29 @@ let listOfData = (function () {
                 item.imageUrl = details.sprites.front_default
                 item.height = details.height
                 item.types = details.types
+                this.hideLoadingMessage()
             }).catch(event => {
                 console.error(event)
+                this.hideLoadingMessage()
             })
         },
 
         // log selected product
         showDetails: function (item) {
-            listOfData.loadDetails(item).then(function(){
+            listOfData.loadDetails(item).then(function () {
                 console.log(item)
             })
+        },
+        // Define the loading message function
+        showLoadingMessage: function () {
+            // Add a div element to show the loading message
+            const loadingMessage = document.createElement("div")
+            loadingMessage.innerHTML = `<div class="loading">Loading...</div>`
+            document.body.appendChild(loadingMessage)
+        },
+        hideLoadingMessage: function () {
+            const loadingMessage = document.querySelector('.loading')
+            loadingMessage? loadingMessage.remove(): ''
         }
     }
 })();
