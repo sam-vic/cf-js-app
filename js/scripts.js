@@ -1,13 +1,12 @@
 let listOfGreens = (function () {
     let data = []
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
 
     return {
         // addition of new data to end of array
-        add: function (newProduct) {
-            //condition 1 to check for data type, condition 2 check for object keys before addition to array
-            (typeof newProduct === 'object' && Object.keys(newProduct) === 'name', 'cost', 'types') ?
-                data.push(newProduct) : 'Wrong data type'
+        add: function (pokemon) {
+            (typeof pokemon === 'object' && 'name' in pokemon) ?
+                data.push(pokemon) : 'Wrong data type'
         },
 
         // call for newest data array
@@ -28,26 +27,8 @@ let listOfGreens = (function () {
             let button = (
                 document.createElement('button')
             )
-            
 
-            // framework of listing the product
-            let textStructure = (
-                'Product: ' + items.name + '; ' + 
-                //'Type: ' + items.types + '; ' +
-                'Cost: $' + items.cost + ' '
-            )
-
-            //conditional testing for how product sold
-            if (items.types === 'greens') {
-                button.innerText = textStructure + 'per head'
-            } else if (items.types === 'micro-greens') {
-                button.innerText = textStructure + 'per 100g'
-            } else if (items.types === 'herbs') {
-                button.innerText = textStructure + 'per shell'
-            } else {
-                //In-case product type is not available
-                return button.innerText = 'Product undefined'
-            }
+            button.innerText = items.name
             // event handler to log selected product
             button.addEventListener('click', event => {
                 this.showDetails(items.name)
@@ -59,15 +40,32 @@ let listOfGreens = (function () {
         // log selected product
         showDetails: function (button) {
             console.log(button)
+        },
+
+        loadList: function () {
+            return fetch(apiUrl).then(function (response) {
+                return response.json();
+            }).then((json) => {
+                json.results.forEach((item) => {
+                    let pokemon = {
+                        name: item.name,
+                        detailsUrl: item.url
+                    };
+                    this.add(pokemon);
+                });
+            }).catch(function (event) {
+                console.error(event);
+            })
         }
     }
 })();
 
 
-
 //loop function to display product line
-listOfGreens.getAll().forEach(items => {
-    listOfGreens.addListItem(items)
+listOfGreens.loadList().then(function () {
+    listOfGreens.getAll().forEach(items => {
+        listOfGreens.addListItem(items)
+    })
 })
 
 // Filter function for product specificity
