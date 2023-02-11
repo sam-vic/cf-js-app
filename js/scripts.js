@@ -1,17 +1,15 @@
-let listOfGreens = (function () {
-    let data = [
-        { name: 'Kale', cost: 4, types: 'greens' },
-        { name: 'Lettuce', cost: 5, types: 'greens' },
-        { name: 'Mini kale', cost: 15, types: 'micro-greens' },
-        { name: 'Basil', cost: 5, types: 'herbs' }
-    ]
+let listOfData = (function () {
+    let data = []
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=5';
 
     return {
         // addition of new data to end of array
-        add: function (newProduct) {
-            //condition 1 to check for data type, condition 2 check for object keys before addition to array
-            (typeof newProduct === 'object' && Object.keys(newProduct) === 'name', 'cost', 'types') ?
-                data.push(newProduct) : 'Wrong data type'
+        add: function (pokemon) {
+            (typeof pokemon === 'object'
+                && 'name' in pokemon
+                && 'detailsUrl' in pokemon
+            ) ?
+                data.push(pokemon) : 'Wrong data type'
         },
 
         // call for newest data array
@@ -32,50 +30,79 @@ let listOfGreens = (function () {
             let button = (
                 document.createElement('button')
             )
-            
-
-            // framework of listing the product
-            let textStructure = (
-                'Product: ' + items.name + '; ' + 
-                //'Type: ' + items.types + '; ' +
-                'Cost: $' + items.cost + ' '
-            )
-
-            //conditional testing for how product sold
-            if (items.types === 'greens') {
-                button.innerText = textStructure + 'per head'
-            } else if (items.types === 'micro-greens') {
-                button.innerText = textStructure + 'per 100g'
-            } else if (items.types === 'herbs') {
-                button.innerText = textStructure + 'per shell'
-            } else {
-                //In-case product type is not available
-                return button.innerText = 'Product undefined'
-            }
+            //button text
+            button.innerText = items.name
             // event handler to log selected product
             button.addEventListener('click', event => {
-                this.showDetails(items.name)
+                this.showDetails(items)
             })
             button.classList.add('button')
             listItem.appendChild(button)
             productSelector.appendChild(listItem)
         },
+        //fetch api into json formate 
+        loadList: function () {
+            this.showLoadingMessage()
+            return fetch(apiUrl).then(function (response) {
+                return response.json()
+            }).then((json) => {
+                json.results.forEach((item) => {
+                    let pokemon = {
+                        name: item.name,
+                        detailsUrl: item.url
+                    };
+                    this.add(pokemon)
+                })
+                this.hideLoadingMessage()
+            }).catch(function (event) {
+                console.error(event)
+                this.hideLoadingMessage()
+            })
+        },
+        //fetch data from api 
+        loadDetails: function (item) {
+            let url = item.detailsUrl
+            return fetch(url).then(response => {
+                return response.json()
+            }).then(details => {
+                item.imageUrl = details.sprites.front_default
+                item.height = details.height
+                item.types = details.types
+                this.hideLoadingMessage()
+            }).catch(event => {
+                console.error(event)
+                this.hideLoadingMessage()
+            })
+        },
+
         // log selected product
-        showDetails: function (button) {
-            console.log(button)
+        showDetails: function (item) {
+            listOfData.loadDetails(item).then(function () {
+                console.log(item)
+            })
+        },
+        // Define the loading message function
+        showLoadingMessage: function () {
+            // Add a div element to show the loading message
+            const loadingMessage = document.createElement("div")
+            loadingMessage.innerHTML = `<div class="loading">Loading...</div>`
+            document.body.appendChild(loadingMessage)
+        },
+        hideLoadingMessage: function () {
+            const loadingMessage = document.querySelector('.loading')
+            loadingMessage? loadingMessage.remove(): ''
         }
     }
 })();
-// addition of new products
-listOfGreens.add({ name: 'Thymn', cost: 4, types: 'herbs' })
-
 
 
 //loop function to display product line
-listOfGreens.getAll().forEach(items => {
-    listOfGreens.addListItem(items)
+listOfData.loadList().then(function () {
+    listOfData.getAll().forEach(items => {
+        listOfData.addListItem(items)
+    })
 })
 
 // Filter function for product specificity
-const productFilter = listOfGreens.getAll().filter(item => item.types === 'greens')
+const productFilter = listOfData.getAll().filter(item => item.types === 'greens')
 console.log(productFilter, '123213')
