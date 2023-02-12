@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CF-js-app</title>
-    <link rel="stylesheet" type="text/css" href="./css/styles.css"></head>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/modal.css"
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+</head>
 <body>
     <div>
         <h1>Entire Data Cataloge</h1>
+    </div>
+    <div>
+        <button id='show-modal'>Show modal</button>
+        <div id='modal-container'>
+          <div class='modal'>
+            <button class='modal-close'>Close</button>
+            <h1>Modal title</h1>
+            <p>Modal text</p>       
+          </div>
+        </div>
     </div>
     <div class='border'>
         <ul class='product-list'></ul>
@@ -17,5 +29,6 @@
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/modal.js"></script>
 </body>
 </html>
