@@ -1,4 +1,5 @@
-let modalFunction = (function () {
+let modalFunction = (function (title, text) {
+
     function showModal(title, text) {
         let modalContainer = document.querySelector('#modal-container');
 
@@ -41,8 +42,8 @@ let modalFunction = (function () {
         modalContainer.classList.remove('is-visible')
     }
 
-    document.querySelector('#show-modal').addEventListener('click', event => {
-        showModal('Modal Title', 'This is the modal content!')
+    document.querySelector('button').addEventListener('click', event => {
+        showModal(title, text)
     })
 
     window.addEventListener('keydown', event => {

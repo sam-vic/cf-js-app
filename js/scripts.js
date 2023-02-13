@@ -1,5 +1,6 @@
+//import { modalFunction } from "./modal";
 let listOfData = (function () {
-    let data = []
+    data = []
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=5';
 
     return {
@@ -36,7 +37,7 @@ let listOfData = (function () {
             button.addEventListener('click', event => {
                 this.showDetails(items)
             })
-            button.classList.add('button')
+            button.classList.add('button', 'target_button')
             listItem.appendChild(button)
             productSelector.appendChild(listItem)
         },
@@ -81,7 +82,7 @@ let listOfData = (function () {
                 console.log(item)
             })
         },
-        // Define the loading message function
+        // Loading message function
         showLoadingMessage: function () {
             // Add a div element to show the loading message
             const loadingMessage = document.createElement("div")
