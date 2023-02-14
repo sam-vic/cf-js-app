@@ -1,0 +1,55 @@
+#modal-container {
+    display: none;
+}
+:is(#modal-container.is-visible, #dialog-container.is-visible) {
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    
+    /* to show it above other content */
+    z-index: 999; 
+    
+    /* to allow scrolling if the screen is not high enough*/
+    overflow: auto; 
+    
+    /* this is used to center the modal */
+    display: grid;
+    text-align: center;
+  }
+  
+  :is(.modal, .dialog) {
+    margin: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 15px;
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 15px;
+    border-color: rgb(124, 63, 237);
+  }
+  
+  :is(.modal-close, .dialog-close) {
+    float: right;
+    border: 0;
+    background: none;
+    color: #777;
+    text-decoration: underline;
+  }
+  
+  :is(.modal h1, .dialog h1) {
+    margin-top: 0;
+  }
+  
+  :is(.modal p, .dialog p){
+    margin-bottom: 0;
+  }
+  
