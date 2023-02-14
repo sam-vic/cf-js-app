@@ -7,7 +7,6 @@
     <title>CF-js-app</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
     <link rel="stylesheet" type="text/css" href="./css/modal.css">
-    <link rel="stylesheet" type="text/css" href="./css/dialog.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 </head>
 
@@ -15,21 +14,22 @@
     <div>
         <h1>Entire Data Cataloge</h1>
     </div>
+    <div>
+        <button class='modal-button' id='show-modal'>Show Modal</button>
+        <div id='modal-container'></div>
+        <button class='dialog-button' id='show-dialog'>Show Dialog</button>
+        <div id='dialog-container'></div>
+    </div>
     <div class='border'>
         <ul class='product-list'>
-
-        <div>
-            <button id='show-modal'>Show modal</button>
-            <div id='modal-container'></div>
-        </div>
         </ul>
     </div>
 
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/dialog.js"></script>
+    <script type="module" src="js/scripts.js"></script>
+    <script type="module" src="js/modal.js"></script>
+    <script type="module" src="js/dialog.js"></script>
 </body>
 
 </html>

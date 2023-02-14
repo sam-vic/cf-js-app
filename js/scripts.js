@@ -1,6 +1,7 @@
-//import { modalFunction } from "./modal";
+import { showModal, hideModal } from './modal.js'
+
 let listOfData = (function () {
-    data = []
+    let data = []
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=5';
 
     return {
@@ -80,6 +81,7 @@ let listOfData = (function () {
         showDetails: function (item) {
             listOfData.loadDetails(item).then(function () {
                 console.log(item)
+                showModal(item.height, item.imageUrl)
             })
         },
         // Loading message function

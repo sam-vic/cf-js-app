@@ -1,7 +1,7 @@
 #modal-container {
     display: none;
 }
-#modal-container.is-visible {
+:is(#modal-container.is-visible, #dialog-container.is-visible) {
     position: fixed;
     padding: 20px;
     box-sizing: border-box;
@@ -22,7 +22,7 @@
     text-align: center;
   }
   
-  .modal {
+  :is(.modal, .dialog) {
     margin: auto;
     display: inline-block;
     box-sizing: border-box;
@@ -33,7 +33,7 @@
     text-align: left;
   }
   
-  .modal-close {
+  :is(.modal-close, .dialog-close) {
     float: right;
     border: 0;
     background: none;
@@ -41,11 +41,11 @@
     text-decoration: underline;
   }
   
-  .modal h1 {
+  :is(.modal h1, .dialog h1) {
     margin-top: 0;
   }
   
-  .modal p {
+  :is(.modal p, .dialog p){
     margin-bottom: 0;
   }
   
