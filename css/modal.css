@@ -31,6 +31,10 @@
     width: 100%;
     max-width: 700px;
     text-align: left;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 15px;
+    border-color: rgb(124, 63, 237);
   }
   
   :is(.modal-close, .dialog-close) {

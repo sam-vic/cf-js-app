@@ -50,7 +50,7 @@ let dialogFunction = (function () {
     window.addEventListener('keydown', event => {
         let modalContainer = document.querySelector('#modal-container');
         if (event.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-          hideModal() 
+            hideDialog() 
         }
     })
 })()

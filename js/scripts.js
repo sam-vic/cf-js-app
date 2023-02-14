@@ -1,4 +1,4 @@
-import { showModal, hideModal } from './modal.js'
+import { showModal } from './modal.js'
 
 let listOfData = (function () {
     let data = []
@@ -80,8 +80,8 @@ let listOfData = (function () {
         // log selected product
         showDetails: function (item) {
             listOfData.loadDetails(item).then(function () {
-                console.log(item)
-                showModal(item.height, item.imageUrl)
+                console.log(item, 'showDetails', item.name)
+                showModal( item.name, item.detailsUrl, item.height, item.imageUrl)
             })
         },
         // Loading message function

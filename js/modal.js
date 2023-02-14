@@ -1,6 +1,6 @@
 let modalContainer = document.querySelector('#modal-container')
 
-function showModal(title, text, height, imageUrl) {
+function showModal(name, text, height, imageUrl) {
 
     // Clear all existing modal content
     modalContainer.innerHTML = ''
@@ -17,7 +17,7 @@ function showModal(title, text, height, imageUrl) {
     })
 
     let titleElement = document.createElement('h1')
-    titleElement.innerText = title
+    titleElement.innerText = name
 
     let contentElement = document.createElement('p')
     contentElement.innerText = text
@@ -31,6 +31,8 @@ function showModal(title, text, height, imageUrl) {
     modal.appendChild(closeButtonElement)
     modal.appendChild(titleElement)
     modal.appendChild(contentElement)
+    modal.appendChild(heightElement)
+    modal.appendChild(imageElement)
     modalContainer.appendChild(modal)
 
     modalContainer.classList.add('is-visible')
@@ -45,10 +47,6 @@ function showModal(title, text, height, imageUrl) {
 function hideModal() {
     modalContainer.classList.remove('is-visible')
 }
-
-document.querySelector('.modal-button').addEventListener('click', event => {
-    showModal('modal title', 'modal text')
-})
 
 window.addEventListener('keydown', event => {
     if (event.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
