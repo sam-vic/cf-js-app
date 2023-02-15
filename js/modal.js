@@ -36,16 +36,20 @@ function showModal(name, text, height, imageUrl) {
     modalContainer.appendChild(modal)
 
     modalContainer.classList.add('is-visible')
-    modalContainer.addEventListener('click', (event) => {
-        let target = event.target
-        if (target === modalContainer) {
-            hideModal()
-        }
-    });
+    modalContainer.addEventListener('click', hideClick);
 }
+
+let hideClick = (event) => {
+    let target = event.target
+    if (target === modalContainer) {
+        hideModal()
+    }
+}
+
 
 function hideModal() {
     modalContainer.classList.remove('is-visible')
+    modalContainer.removeEventListener('click', hideClick)
 }
 
 window.addEventListener('keydown', event => {
