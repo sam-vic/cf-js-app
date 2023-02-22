@@ -2,6 +2,13 @@ let modalContainer = document.querySelector('#modal-container')
 
 function showModal(name, text, height, imageUrl) {
 
+    let modalTitle = $('.modal-title')
+    let modalBody = $('.modal-body')
+    let modalHeader = $('.modal-header')
+
+    modalTitle.empty()
+    modalBody.empty()
+
     // Clear all existing modal content
     modalContainer.innerHTML = ''
 
