@@ -28,12 +28,12 @@ let listOfData = (function () {
             let listItem = (
                 document.createElement('li')
             )
-
+            listItem.innerText = items.name
             let button = (
                 document.createElement('button')
             )
             //button text
-            button.innerText = items.name
+            button.innerText = 'show profile'
             // event handler to log selected product
             button.addEventListener('click', event => {
                 this.showDetails(items)
