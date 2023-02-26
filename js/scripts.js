@@ -36,8 +36,9 @@ let listOfData = (function () {
             //button text
             button.innerText = 'show profile'
             // event handler to log selected product
+      
             button.addEventListener('click', event => {
-                console.log('clicked')
+                console.log('loaded')
                 this.showDetails(items)
             })
             button.classList.add('button', 'target_button')
@@ -107,6 +108,3 @@ listOfData.loadList().then(function () {
         listOfData.addListItem(items)
     })
 })
-
-// Filter function for product specificity
-const productFilter = listOfData.getAll().filter(item => item.types === 'greens')
