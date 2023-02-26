@@ -32,6 +32,7 @@ let listOfData = (function () {
             let button = (
                 document.createElement('button')
             )
+            listItem.innerText = items.name
             //button text
             button.innerText = items.name
             // event handler to log selected product
