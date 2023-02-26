@@ -11,6 +11,8 @@ li {
     padding: 10px;
     text-decoration: none;
     list-style-type: none;
+    border-style: solid;
+    border-radius: 5px;
 }
 
 ul {
