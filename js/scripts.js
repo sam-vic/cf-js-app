@@ -81,7 +81,7 @@ let listOfData = (function () {
         showDetails: function (item) {
             listOfData.loadDetails(item).then(function () {
                 console.log(item, 'showDetails', item.name)
-                showModal( item.name, item.detailsUrl, item.height, item.imageUrl)
+                showModal(item)
             })
         },
         // Loading message function

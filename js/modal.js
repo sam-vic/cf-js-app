@@ -1,19 +1,18 @@
 let modalContainer = document.querySelector('#modal-container')
 
-function showModal(name, text, height, imageUrl) {
+function showModal(item) {
 
     let modalTitle = $('.modal-title')
     let modalBody = $('.modal-body')
     let modalHeader = $('.modal-header')
 
+    //Clear all existing modal content
     modalTitle.empty()
     modalBody.empty()
 
-    // Clear all existing modal content
-    modalContainer.innerHTML = ''
+    let nameElement = $('<h1>' + item.name + '</h1>')
+    let imageElement = $('<img class="modal-img">')
 
-    let modal = document.createElement('div')
-    modal.classList.add('modal')
 
     // Add the new modal content
     let closeButtonElement = document.createElement('button')
@@ -23,23 +22,11 @@ function showModal(name, text, height, imageUrl) {
         hideModal()
     })
 
-    let titleElement = document.createElement('h1')
-    titleElement.innerText = name
-
-    let contentElement = document.createElement('p')
-    contentElement.innerText = text
-
-    let heightElement = document.createElement('p');
-    heightElement.innerText = `Height: ${height}`;
-
-    let imageElement = document.createElement('img');
-    imageElement.src = imageUrl;
-
-    modal.appendChild(closeButtonElement)
-    modal.appendChild(titleElement)
-    modal.appendChild(contentElement)
-    modal.appendChild(heightElement)
-    modal.appendChild(imageElement)
+    modalHeader.appendChild(closeButtonElement)
+    modalTitle.appendChild(nameElement)
+    modalBody.appendChild(contentElement)
+    modalBody.appendChild(heightElement)
+    modalBody.appendChild(imageElement)
     modalContainer.appendChild(modal)
 
     modalContainer.classList.add('is-visible')
