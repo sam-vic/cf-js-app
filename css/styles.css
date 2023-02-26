@@ -28,13 +28,12 @@ ul {
 .button {
     background-color: transparent;
     color: black;
-    font-size: 30px;
+    font-size: 15px;
     border: 3px;
     color: black;
     padding: 10px;
     border-radius: 5px;
     background-color: #416b38;
-    height: 200px;
     width: 100%;
 }
 
