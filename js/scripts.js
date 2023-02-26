@@ -2,7 +2,7 @@ import { showModal } from './modal.js'
 
 let listOfData = (function () {
     let data = []
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=5';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=50';
 
     return {
         // addition of new data to end of array
@@ -34,9 +34,10 @@ let listOfData = (function () {
             )
             listItem.innerText = items.name
             //button text
-            button.innerText = items.name
+            button.innerText = 'show profile'
             // event handler to log selected product
             button.addEventListener('click', event => {
+                console.log('clicked')
                 this.showDetails(items)
             })
             button.classList.add('button', 'target_button')
@@ -109,4 +110,3 @@ listOfData.loadList().then(function () {
 
 // Filter function for product specificity
 const productFilter = listOfData.getAll().filter(item => item.types === 'greens')
-console.log(productFilter, '123213')
