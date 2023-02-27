@@ -1,5 +1,5 @@
-let modalContainer = document.querySelector('#modal-container')
-function showModal(name, text, height, imageUrl) {
+
+function showModal(name, height, imageUrl) {
 
   let modalBody = $('.modal-body')
   let modalTitle = $('.modal-title')
@@ -19,28 +19,5 @@ function showModal(name, text, height, imageUrl) {
     modalTitle.append(titleElement)
     modalBody.append(heightElement)
     modalBody.append(imageElement)
-
-    modalContainer.classList.add('is-visible')
-    modalContainer.addEventListener('click', hideClick);
 }
-
-let hideClick = (event) => {
-    let target = event.target
-    if (target === modalContainer) {
-        hideModal()
-    }
-}
-
-
-function hideModal() {
-    modalContainer.classList.remove('is-visible')
-    modalContainer.removeEventListener('click', hideClick)
-}
-
-window.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-        hideModal()
-    }
-})
-
-export { showModal, hideModal }
+export { showModal }
