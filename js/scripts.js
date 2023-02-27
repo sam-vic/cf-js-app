@@ -2,7 +2,7 @@ import { showModal } from './modal.js'
 
 let listOfData = (function () {
     let data = []
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=5';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=15';
 
     return {
         // addition of new data to end of array
@@ -29,18 +29,23 @@ let listOfData = (function () {
                 document.createElement('li')
             )
 
-            let button = (
+            let bootStrapButton = (
                 document.createElement('button')
             )
             listItem.innerText = items.name
             //button text
-            button.innerText = 'Show Profile'
+            bootStrapButton.innerText = 'Show Profile'
+
+            //Add relative attr to the button
+            bootStrapButton.setAttribute('data-toggle', 'modal')
+            bootStrapButton.setAttribute('data-target', '#exampleModal')
+
             // event handler to log selected product
-            button.addEventListener('click', event => {
+            bootStrapButton.addEventListener('click', event => {
                 this.showDetails(items)
             })
-            button.classList.add('button', 'target_button')
-            listItem.appendChild(button)
+            bootStrapButton.classList.add('button', 'target_button')
+            listItem.appendChild(bootStrapButton)
             productSelector.appendChild(listItem)
         },
         //fetch api into json formate 
@@ -82,7 +87,7 @@ let listOfData = (function () {
         showDetails: function (item) {
             listOfData.loadDetails(item).then(function () {
                 console.log(item, 'showDetails', item.name)
-                showModal( item.name, item.detailsUrl, item.height, item.imageUrl)
+                showModal(item.name, item.detailsUrl, item.height, item.imageUrl)
             })
         },
         // Loading message function
@@ -94,7 +99,7 @@ let listOfData = (function () {
         },
         hideLoadingMessage: function () {
             const loadingMessage = document.querySelector('.loading')
-            loadingMessage? loadingMessage.remove(): ''
+            loadingMessage ? loadingMessage.remove() : ''
         }
     }
 })();
