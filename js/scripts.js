@@ -86,7 +86,8 @@ let listOfData = (function () {
         // log selected product
         showDetails: function (item) {
             listOfData.loadDetails(item).then(function () {
-                showModal(item.name, item.detailsUrl, item.height, item.imageUrl)
+                console.log(item, 'showDetails', item.name)
+                showModal(item.name, item.height, item.imageUrl)
             })
         },
         // Loading message function
@@ -110,7 +111,3 @@ listOfData.loadList().then(function () {
         listOfData.addListItem(items)
     })
 })
-
-// Filter function for product specificity
-const productFilter = listOfData.getAll().filter(item => item.types === 'greens')
-console.log(productFilter, '123213')
