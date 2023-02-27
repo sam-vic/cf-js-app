@@ -1,20 +1,12 @@
 let modalContainer = document.querySelector('#modal-container')
-
 function showModal(name, text, height, imageUrl) {
 
-    // Clear all existing modal content
-    modalContainer.innerHTML = ''
+  let modalBody = $('.modal-body')
+  let modalTitle = $('.modal-title')
+  let modalHeader = $('.modal-header')
 
-    let modal = document.createElement('div')
-    modal.classList.add('modal')
-
-    // Add the new modal content
-    let closeButtonElement = document.createElement('button')
-    closeButtonElement.classList.add('modal-close')
-    closeButtonElement.innerText = 'Close'
-    closeButtonElement.addEventListener('click', event => {
-        hideModal()
-    })
+  modalTitle.empty()
+  modalBody.empty()
 
     let titleElement = document.createElement('h1')
     titleElement.innerText = name
@@ -28,12 +20,9 @@ function showModal(name, text, height, imageUrl) {
     let imageElement = document.createElement('img');
     imageElement.src = imageUrl;
 
-    modal.appendChild(closeButtonElement)
-    modal.appendChild(titleElement)
-    modal.appendChild(contentElement)
-    modal.appendChild(heightElement)
-    modal.appendChild(imageElement)
-    modalContainer.appendChild(modal)
+    modalTitle.append(titleElement)
+    modalBody.append(heightElement)
+    modalBody.append(imageElement)
 
     modalContainer.classList.add('is-visible')
     modalContainer.addEventListener('click', hideClick);
