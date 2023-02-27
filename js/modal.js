@@ -3,16 +3,12 @@ function showModal(name, text, height, imageUrl) {
 
   let modalBody = $('.modal-body')
   let modalTitle = $('.modal-title')
-  let modalHeader = $('.modal-header')
 
   modalTitle.empty()
   modalBody.empty()
 
     let titleElement = document.createElement('h1')
     titleElement.innerText = name
-
-    let contentElement = document.createElement('p')
-    contentElement.innerText = text
 
     let heightElement = document.createElement('p');
     heightElement.innerText = `Height: ${height}`;
