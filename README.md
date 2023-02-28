@@ -7,6 +7,10 @@ Display App was build with HTML, CSS and JavaScript, that fetches data from Pok√
 <img width="1075" alt="Screenshot 2023-02-28 at 1 15 29 PM" src="https://user-images.githubusercontent.com/64434536/221981840-0e0e5327-b7a0-42d7-a470-edc812775fcb.png">
 
 
+**Search result opens modal**
+
+<img width="1075" alt="Screenshot 2023-02-28 at 1 15 29 PM" src="https://user-images.githubusercontent.com/64434536/221982087-40813888-230c-48d3-9e07-b87ae42f5006.png">
+
 
 **FrameWork:**
 
