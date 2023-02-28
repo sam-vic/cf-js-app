@@ -3,6 +3,9 @@ Display Data app
 What is this about?
 
 Display App was build with HTML, CSS and JavaScript, that fetches data from PokéAPI.
+<img width="1408" alt="Screenshot 2023-02-28 at 1 13 49 PM" src="https://user-images.githubusercontent.com/64434536/221981595-3faa3c00-65c5-45c4-ae32-22bdaa0ea96a.png">
+
+
 
 FrameWork:
 
@@ -11,7 +14,7 @@ jQuery
 
 Sources
 
-PokéAPI documentation
+PokéAPI documentation: https://pokeapi.co/
 PokéAPI Pokémon list, with name and Url to detailed Pokémon
 PokéAPI example of a detailed Pokémon
 
