@@ -1,24 +1,25 @@
-Display Data app
+**Display Data app**
 
-What is this about?
+**What is this about?**
 
 Display App was build with HTML, CSS and JavaScript, that fetches data from PokéAPI.
-<img width="1408" alt="Screenshot 2023-02-28 at 1 13 49 PM" src="https://user-images.githubusercontent.com/64434536/221981595-3faa3c00-65c5-45c4-ae32-22bdaa0ea96a.png">
+
+<img width="1075" alt="Screenshot 2023-02-28 at 1 15 29 PM" src="https://user-images.githubusercontent.com/64434536/221981840-0e0e5327-b7a0-42d7-a470-edc812775fcb.png">
 
 
 
-FrameWork:
+**FrameWork:**
 
 Bootstrap
 jQuery
 
-Sources
+**Sources**
 
 PokéAPI documentation: https://pokeapi.co/
 PokéAPI Pokémon list, with name and Url to detailed Pokémon
 PokéAPI example of a detailed Pokémon
 
-Tools
+**Tools**
 
 Visual Studio Code
 GitHub 
@@ -27,7 +28,7 @@ Polyfill for promises with this min.js
 Polyfill for fetch with this js file
 Visual Studio Extension Code "Live Server"
 
-How to run this?
+**How to run this?**
 
 clone the repo
 cd into project
