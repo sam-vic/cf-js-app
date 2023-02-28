@@ -8,9 +8,13 @@ $(function () {
             url: 'https://pokeapi.co/api/v2/pokemon/?limit=150' + searchTerm,
             method: 'GET',
             success: function (data) {
-                data.results.forEach((item) => {
+                let matchingPokemon = data.results.find((pokemon) => {
+                    return pokemon.name.toLowerCase() === searchTerm.toLowerCase()
+                });
+
+                if (matchingPokemon) {
                     $.ajax({
-                        url: item.url,
+                        url: matchingPokemon.url,
                         method: 'GET',
                         success: function (pokemonDetails) {
                             let pokemon = {
@@ -18,18 +22,21 @@ $(function () {
                                 height: pokemonDetails.height,
                                 imageUrl: pokemonDetails.sprites.front_default
                             };
-                            showModal(pokemon.name, pokemon.height, pokemon.imageUrl);
+                            showModal(pokemon.name, pokemon.height, pokemon.imageUrl)
                             $('#exampleModal').modal('show')
                         },
                         error: function (error) {
-                            console.log(error);
+                            console.log(error)
                         }
                     });
-                });
+                } else {
+                    console.log('No matching Pokemon found')
+                }
             },
             error: function (error) {
-                console.log(error);
+                console.log(error)
             }
         })
     })
 })
+
