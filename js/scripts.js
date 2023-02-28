@@ -2,7 +2,7 @@ import { showModal } from './modal.js'
 
 let listOfData = (function () {
     let data = []
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=15';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     return {
         // addition of new data to end of array
