@@ -42,3 +42,11 @@ ul {
 .button:hover {
     background-color: #558a49;
 }
+
+.navbar {
+    justify-content: end;
+}
+
+#navbarSupportedContent {
+    justify-content: end;
+}
