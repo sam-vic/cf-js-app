@@ -8,11 +8,14 @@ h1 {
 }
 
 li {
-    padding: 10px;
     text-decoration: none;
     list-style-type: none;
     border-style: solid;
     border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    width: 250px;
+    margin: 10px;
 }
 
 ul {
@@ -21,10 +24,7 @@ ul {
 }
 
 .border {
-    border-style: solid;
-    border-color: #416b38;
-    border-width: 5px;
-    border-radius: 5px;
+    border: none !important;
 }
 
 .button {
@@ -34,11 +34,31 @@ ul {
     border: 3px;
     color: black;
     padding: 10px;
-    border-radius: 5px;
     background-color: #416b38;
-    width: 100%;
+    width: 40%;
+    height: 65px;
+}
+
+button:focus {
+    outline: none;
 }
 
 .button:hover {
     background-color: #558a49;
+}
+
+.target_button {
+    margin-left: auto;
+}
+
+.navbar {
+    justify-content: end;
+}
+
+.item-title {
+    padding: 20px;
+}
+
+#navbarSupportedContent {
+    justify-content: end;
 }

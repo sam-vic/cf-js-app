@@ -2,7 +2,7 @@ import { showModal } from './modal.js'
 
 let listOfData = (function () {
     let data = []
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=15';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=4';
 
     return {
         // addition of new data to end of array
@@ -29,10 +29,15 @@ let listOfData = (function () {
                 document.createElement('li')
             )
 
+            let ItemTitle = (
+                document.createElement('span')
+            )
+
+            ItemTitle.innerText = items.name
+
             let bootStrapButton = (
                 document.createElement('button')
             )
-            listItem.innerText = items.name
             //button text
             bootStrapButton.innerText = 'Show Profile'
 
@@ -45,8 +50,12 @@ let listOfData = (function () {
                 this.showDetails(items)
             })
             bootStrapButton.classList.add('button', 'target_button')
+            listItem.appendChild(ItemTitle)
             listItem.appendChild(bootStrapButton)
             productSelector.appendChild(listItem)
+            ItemTitle.classList.add('item-title')
+            listItem.classList.add('li-style')
+
         },
         //fetch api into json formate 
         loadList: function () {
@@ -111,3 +120,10 @@ listOfData.loadList().then(function () {
         listOfData.addListItem(items)
     })
 })
+
+export function showDetails(item) {
+    listOfData.loadDetails(item).then(function () {
+        console.log(item, 'showDetails', item.name)
+        showModal(item.name, item.height, item.imageUrl)
+    })
+}
