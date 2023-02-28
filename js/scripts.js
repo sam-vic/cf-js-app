@@ -29,10 +29,15 @@ let listOfData = (function () {
                 document.createElement('li')
             )
 
+            let ItemTitle = (
+                document.createElement('span')
+            )
+
+            ItemTitle.innerText = items.name
+
             let bootStrapButton = (
                 document.createElement('button')
             )
-            listItem.innerText = items.name
             //button text
             bootStrapButton.innerText = 'Show Profile'
 
@@ -45,8 +50,12 @@ let listOfData = (function () {
                 this.showDetails(items)
             })
             bootStrapButton.classList.add('button', 'target_button')
+            listItem.appendChild(ItemTitle)
             listItem.appendChild(bootStrapButton)
             productSelector.appendChild(listItem)
+            ItemTitle.classList.add('item-title')
+            listItem.classList.add('li-style')
+
         },
         //fetch api into json formate 
         loadList: function () {
