@@ -1,8 +1,9 @@
 import { showModal } from './modal.js'
 
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
 let listOfData = (function () {
     let data = []
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     return {
         // addition of new data to end of array
@@ -121,9 +122,35 @@ listOfData.loadList().then(function () {
     })
 })
 
-export function showDetails(item) {
-    listOfData.loadDetails(item).then(function () {
-        console.log(item, 'showDetails', item.name)
-        showModal(item.name, item.height, item.imageUrl)
+//fetch api into json formate 
+export function loadList() {
+    return fetch(apiUrl).then(function (response) {
+        return response.json()
+    }).then((json) => {
+        let pokemonList = [] // Create an empty array to hold the list of Pokemon
+        json.results.forEach((item) => {
+            let pokemon = {
+                name: item.name,
+                detailsUrl: item.url
+            }
+            pokemonList.push(pokemon) // Add the new Pokemon object to the list
+        })
+        return pokemonList // Return the list of Pokemon
+    }).catch(function (event) {
+        console.error(event)
+    })
+}
+
+//fetch data from api 
+export function loadDetails(item) {
+    let url = item.detailsUrl
+    return fetch(url).then(response => {
+        return response.json()
+    }).then(details => {
+        item.imageUrl = details.sprites.front_default
+        item.height = details.height
+        item.types = details.types
+    }).catch(event => {
+        console.error(event)
     })
 }
