@@ -22,7 +22,7 @@
     text-align: center;
   }
   
-  :is(.modal, .dialog) {
+  .modal {
     margin: auto;
     display: inline-block;
     box-sizing: border-box;
@@ -37,7 +37,7 @@
     border-color: rgb(124, 63, 237);
   }
   
-  :is(.modal-close, .dialog-close) {
+  .modal-close {
     float: right;
     border: 0;
     background: none;
@@ -45,11 +45,11 @@
     text-decoration: underline;
   }
   
-  :is(.modal h1, .dialog h1) {
+  :is(.modal h1) {
     margin-top: 0;
   }
   
-  :is(.modal p, .dialog p){
+  :is(.modal p){
     margin-bottom: 0;
   }
   
